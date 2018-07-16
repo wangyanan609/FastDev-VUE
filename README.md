@@ -63,7 +63,7 @@ MOCK文件建议按页面分包，并且必须以static下config.js配置的API�
 ## 多页+单页混合应用
 
 src的pages存放开发页面,从目录结构可以看出通过多页分包,并在各自页面配置路由,满足各页面的单页应用。注意：各html页面,在head中引入static下的两个静态js，可在此处开放动态加载外部JS。
-![image](https://github.com/wangyanan609/blog/images/index.png)
+![image](https://github.com/wangyanan609/blog/blob/master/images/index.png)
 ```
 <!DOCTYPE html>
 <html>
@@ -88,7 +88,7 @@ src的pages存放开发页面,从目录结构可以看出通过多页分包,并�
 ## 静态配置文件
 
 static下的静态文件不会被webpack打包压缩,在webpack打包后生成dist内仍然会保留static目录,static下的config.js为配置文件,可用于PRO环境下正式HOST和接口名等配置参数，也可以配置外部需要动态加载的JS，但必须严格按照配置要求进行配置。
-![image](https://github.com/wangyanan609/blog/images/config.png)
+![image](https://github.com/wangyanan609/blog/blob/master/images/config.png)
 ```
 /* 配置项
  *接口IP必须以XXX_HOST命名,
