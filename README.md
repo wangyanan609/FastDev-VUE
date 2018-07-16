@@ -63,46 +63,14 @@ MOCK文件建议按页面分包，并且必须以static下config.js配置的API�
 ## 多页+单页混合应用
 
 src的pages存放开发页面,从目录结构可以看出通过多页分包,并在各自页面配置路由,满足各页面的单页应用。注意：各html页面,在head中引入static下的两个静态js，可在此处开放动态加载外部JS。
+
 ![image](https://github.com/wangyanan609/blog/blob/master/images/index.png)
-```
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0.maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
-    <title></title>
-    <script src="./config.js"></script>
-    <script src="static/js/init.js"></script>
-    <script>
-      init.OutJS("map"); // 动态加载config中的map.js
-      init.OutJS("serverPush"); // 动态加载config中的serverPush.js
-    </script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
-</html>
-```
 
 ## 静态配置文件
 
 static下的静态文件不会被webpack打包压缩,在webpack打包后生成dist内仍然会保留static目录,static下的config.js为配置文件,可用于PRO环境下正式HOST和接口名等配置参数，也可以配置外部需要动态加载的JS，但必须严格按照配置要求进行配置。
+
 ![image](https://github.com/wangyanan609/blog/blob/master/images/config.png)
-```
-/* 配置项
- *接口IP必须以XXX_HOST命名,
- *接口方法名必须指明GET请求还是POST请求，命名为XXX_GET或XXX_POST,
- *需要远程调取JS的地址必须以XXX_URL命名,
- *其他自定义配置参数避免以上的命名冲突
- */
-var config = {
-    "map_URL":"http://192.168.91.130:8080/js/map.js",
-    "serverPush_URL":"http://192.168.91.130:6201/serverpush.js",
-    "uumsUrl_HOST":"http://192.168.56.2:8081",
-    "getToken_GET":"/getToken"
-};
-```
 
 ## DEV模式关闭MOCK自动处理跨域问题
 当接口涉及跨域问题,并且已经关闭MOCK的情况下,DEV环境下请求接口会自动通过proxyTable处理跨域。
